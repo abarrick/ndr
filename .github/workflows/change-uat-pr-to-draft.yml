@@ -13,4 +13,5 @@ jobs:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
             PR_NUMBER: ${{ github.event.number }}
         steps:
+            - uses: actions/checkout@v2
             - run: gh pr ready $PR_NUMBER --undo
