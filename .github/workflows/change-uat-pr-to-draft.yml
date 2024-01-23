@@ -12,8 +12,8 @@ jobs:
         if: contains(${{ github.event.pull_request.base.ref }}, 'gs-pipeline')
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
-            PR: ${{ github.event.pull_request }}
+            PR_DETAILS: ${{ github.event }}
         steps:
             - uses: actions/checkout@v4
             - run: ./scripts/substring.sh >> $GITHUB_OUTPUT
-            - run: gh pr create --title $PR.title --base uat --head <original feature branch> --draft
+            - run: gh pr create --title $PR_DETAILS.pull_request.title --base uat --head <original feature branch> --draft
