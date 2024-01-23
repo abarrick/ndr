@@ -1,6 +1,5 @@
 name: 'Create UAT PR to draft on INT PR creation'
 on:
-    workflow_dispatch:
     pull_request:
         types:
             - opened
@@ -12,7 +11,7 @@ jobs:
         if: contains(${{ github.event.pull_request.base.ref }}, 'gs-pipeline')
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
-            PR_DETAILS: ${{ github.event }}
+            PR_TITLE: ${{ github.event.pull_request.title }}
         steps:
             - uses: actions/checkout@v4
             - name: Work out base branch name
@@ -21,5 +20,5 @@ jobs:
 
             - name: Create UAT PR
               id: uat_pr
-              run: gh pr create --title $PR_DETAILS.pull_request.title --base uat --head ${{ steps.base_branch.outputs.base_name }} --draft
+              run: gh pr create --title $PR_TITLE --base uat --head ${{ steps.base_branch.outputs.base_name }} --draft
 
