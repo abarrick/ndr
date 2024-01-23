@@ -12,6 +12,7 @@ jobs:
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
             PR_TITLE: ${{ github.event.pull_request.title }}
+            PR_BODY: ${{ github.event.pull_request.body }}
         steps:
             - uses: actions/checkout@v4
             - name: Work out base branch name
@@ -20,5 +21,5 @@ jobs:
 
             - name: Create UAT PR
               id: uat_pr
-              run: gh pr create --title $PR_TITLE --base uat --head ${{ steps.base_branch.outputs.base_name }} --draft
+              run: gh pr create --title ${PR_TITLE} --body ${PR_BODY} --base uat --head ${{ steps.base_branch.outputs.base_name }} --draft
 
