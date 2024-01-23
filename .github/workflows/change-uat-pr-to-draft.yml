@@ -1,0 +1,15 @@
+name: 'Change UAT PR to draft on creation'
+on:
+    pull_request:
+        types:
+            - opened
+        branches:
+            - 'UAT'
+jobs:
+    change_new_pr_to_draft:
+        runs-on: ubuntu-latest
+        env:
+            GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
+            PR_NUMBER: ${{ github.event.number }}
+        steps:
+            - run: gh pr ready $PR_NUMBER [--undo]
