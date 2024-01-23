@@ -4,4 +4,4 @@ unprefixed=${branchName:12}
 join="_-_"
 remainder=${unprefixed#*$join}
 substrLength=$(( ${#unprefixed} - ${#remainder} - ${#join} ))
-echo ${branchName:12:${substrLength}}
+echo "baseBranch=${branchName:12:${substrLength}}" >> $GITHUB_OUTPUT
