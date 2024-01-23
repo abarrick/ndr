@@ -1,19 +1,19 @@
-name: 'Change UAT PR to draft on creation'
+name: 'Create UAT PR to draft on INT PR creation'
 on:
     workflow_dispatch:
     pull_request:
         types:
             - opened
         branches:
-            - 'uat'
-permissions:
-    contents: write
+            - 'int'
 jobs:
     change_new_pr_to_draft:
         runs-on: ubuntu-latest
+        if: contains(${{ github.event.pull_request.base.ref }}, 'gs-pipeline')
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
-            PR_NUMBER: ${{ github.event.number }}
+            PR: ${{ github.event }}
         steps:
-            - uses: actions/checkout@v2
-            - run: gh pr ready $PR_NUMBER --undo
+            - uses: actions/checkout@v4
+            - run: ./scripts/substring.sh >> $GITHUB_OUTPUT
+            - run: gh pr create --title $PR.title --base uat --head <original feature branch> --draft
