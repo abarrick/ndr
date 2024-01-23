@@ -12,7 +12,7 @@ jobs:
         if: contains(${{ github.event.pull_request.base.ref }}, 'gs-pipeline')
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
-            PR_DETAILS: ${{ github.event }}
+            PR_DETAILS: ${{ github.event.number }}
         steps:
             - uses: actions/checkout@v4
             - run: ./scripts/substring.sh >> $GITHUB_OUTPUT
