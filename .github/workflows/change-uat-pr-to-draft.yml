@@ -6,6 +6,8 @@ on:
             - opened
         branches:
             - 'uat'
+permissions:
+    contents: write
 jobs:
     change_new_pr_to_draft:
         runs-on: ubuntu-latest
