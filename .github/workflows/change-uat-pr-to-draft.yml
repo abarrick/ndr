@@ -15,5 +15,5 @@ jobs:
             PR_DETAILS: ${{ github.event.number }}
         steps:
             - uses: actions/checkout@v4
-            - run: ./scripts/substring.sh >> $GITHUB_OUTPUT
+            - run: ./github/workflows/scripts/substring.sh >> $GITHUB_OUTPUT
             - run: gh pr create --title $PR_DETAILS.pull_request.title --base uat --head <original feature branch> --draft
