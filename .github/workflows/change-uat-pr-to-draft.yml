@@ -7,13 +7,19 @@ on:
         branches:
             - 'int'
 jobs:
-    change_new_pr_to_draft:
+    create_uat_pr:
         runs-on: ubuntu-latest
         if: contains(${{ github.event.pull_request.base.ref }}, 'gs-pipeline')
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
-            PR_DETAILS: ${{ github.event.number }}
+            PR_DETAILS: ${{ github.event }}
         steps:
             - uses: actions/checkout@v4
-            - run: .github/workflows/scripts/substring.sh
-            - run: gh pr create --title $PR_DETAILS.pull_request.title --base uat --head <original feature branch> --draft
+            - name: Work out base branch name
+              id: base_branch
+              run: .github/workflows/scripts/substring.sh
+
+            - name: Create UAT PR
+              id: uat_pr
+              run: gh pr create --title $PR_DETAILS.pull_request.title --base uat --head ${{ steps.base_branch.outputs.base_name }} --draft
+
