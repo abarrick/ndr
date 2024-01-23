@@ -1,10 +1,11 @@
 name: 'Change UAT PR to draft on creation'
 on:
+    workflow_dispatch:
     pull_request:
         types:
             - opened
         branches:
-            - 'UAT'
+            - 'uat'
 jobs:
     change_new_pr_to_draft:
         runs-on: ubuntu-latest
