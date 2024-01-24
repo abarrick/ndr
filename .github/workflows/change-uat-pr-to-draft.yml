@@ -8,7 +8,7 @@ on:
 jobs:
     create_uat_pr:
         runs-on: ubuntu-latest
-        if: contains(${{ github.event.pull_request.base.ref }}, 'gs-pipeline')
+        if: contains(${{ github.event.pull_request.head.ref }}, 'gs-pipeline')
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
             PR_TITLE: ${{ github.event.pull_request.title }}
@@ -17,15 +17,13 @@ jobs:
             - uses: actions/checkout@v4
               with:
                 fetch-depth: 0
-            - name: Work out base branch name
-              id: base_branch
+            - id: base-branch              
               run: |
-                echo ${{ github.event.pull_request.base.ref }}
-                .github/workflows/scripts/substring.sh
-                echo ${{ steps.base_branch.outputs.base_name }}
-
-            - name: Create UAT PR
-              id: uat_pr
+                echo ${{ github.event.pull_request.head.ref }}
+                echo "base_name=$(.github/workflows/scripts/substring.sh)" >> $GITHUB_OUTPUT
+                echo ${{ steps.base-branch.outputs.base_name }}
+              shell: bash
+            - id: uat_pr              
               run: |
                 git checkout uat
-                gh pr create -t$PR_TITLE -b$PR_BODY -Buat -H${{ steps.base_branch.outputs.base_name }} -d
+                gh pr create -t$PR_TITLE -b$PR_BODY -Buat -H${{ steps.base-branch.outputs.base_name }} -d
