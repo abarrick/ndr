@@ -1,5 +1,5 @@
 #! /bin/bash
-branchName="gs-pipeline/feature/workflows_-_int"
+branchName="$SOURCE_PROMOTION_BRANCH"
 unprefixed=${branchName:12}
 join="_-_"
 remainder=${unprefixed#*$join}
