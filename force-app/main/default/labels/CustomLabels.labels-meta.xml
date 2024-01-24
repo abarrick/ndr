@@ -14,4 +14,11 @@
         <shortDescription>Second Label</shortDescription>
         <value>my second label - changed again</value>
     </labels>
+    <labels>
+        <fullName>Third_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Third Label</shortDescription>
+        <value>a third value</value>
+    </labels>
 </CustomLabels>
