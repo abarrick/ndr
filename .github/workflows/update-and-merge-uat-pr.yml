@@ -9,12 +9,10 @@ jobs:
         runs-on: ubuntu-latest
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
-            PR_NUMBER: ${{ github.event.client_payload }}        
         steps:
             - uses: actions/checkout@v4
             - id: uat_pr_merge
               run: |
-                echo "$PR_NUMBER"
-                echo "{{ inputs.issueId }}"
+                echo "${{ inputs.issueId }}"
                 gh pr ready $PR_NUMBER
                 gh pr merge $PR_NUMBER
