@@ -11,8 +11,9 @@ jobs:
         if: ${{ contains(github.event.pull_request.head.ref, 'gs-pipeline') }}
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
+            PR_NUMBER: ${{ github.event.pull_request.number }}
         steps:
             - uses: actions/checkout@v4
             - id: uat_pr_draft
               run: |
-                gh pr ready --undo
+                gh pr ready $PR_NUMBER --undo
