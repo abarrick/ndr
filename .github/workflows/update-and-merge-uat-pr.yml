@@ -14,6 +14,6 @@ jobs:
             - id: uat_pr_merge
               run: |
                 echo "${{ inputs.issueId }}"
-                gh pr list --search "base:uat ${{ inputs.issueId}} in:title type:pr is:open" --json "number"
+                PR_NUMBER=$(gh pr list --search "base:uat ${{ inputs.issueId}} in:title type:pr is:open" --json "number" --jq ".[0].number")
                 gh pr ready $PR_NUMBER
                 gh pr merge $PR_NUMBER
