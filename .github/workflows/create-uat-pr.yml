@@ -1,4 +1,4 @@
-name: 'Create UAT PR INT PR creation'
+name: 'Create UAT PR on INT PR creation'
 on:
     pull_request:
         types:
@@ -13,6 +13,7 @@ jobs:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
             PR_TITLE: ${{ github.event.pull_request.title }}
             PR_BODY: ${{ github.event.pull_request.body }}
+            SOURCE_PROMOTION_BRANCH: ${{ github.event.pull_request.head.ref }}
         steps:
             - uses: actions/checkout@v4
               with:
