@@ -1,0 +1,29 @@
+name: 'Create UAT PR INT PR creation'
+on:
+    pull_request:
+        types:
+            - opened
+        branches:
+            - 'int'
+jobs:
+    create_uat_pr:
+        runs-on: ubuntu-latest
+        if: ${{ contains(github.event.pull_request.head.ref, 'gs-pipeline') }}
+        env:
+            GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
+            PR_TITLE: ${{ github.event.pull_request.title }}
+            PR_BODY: ${{ github.event.pull_request.body }}
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            - id: base-branch              
+              run: |
+                .github/workflows/scripts/substring.sh                
+              shell: bash
+            - id: uat_pr
+              run: |
+                echo $PR_TITLE
+                echo $PR_BODY
+                git checkout ${{ steps.base-branch.outputs.base_name }}
+                gh pr create -Buat -d -t$PR_TITLE -b"$PR_BODY"
