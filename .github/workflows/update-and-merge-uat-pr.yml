@@ -1,6 +1,9 @@
 name: 'Update and merge UAT PR'
 on:
     workflow_dispatch:
+        inputs:
+            issueId:
+                type: string
 jobs:
     update_merge_uat:
         runs-on: ubuntu-latest
