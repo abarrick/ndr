@@ -7,7 +7,6 @@ on:
 jobs:
     update_merge_uat:
         runs-on: ubuntu-latest
-        if: ${{ contains(github.event.pull_request.head.ref, 'gs-pipeline') }}
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
             PR_NUMBER: ${{ github.event.client_payload }}        
