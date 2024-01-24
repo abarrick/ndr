@@ -19,10 +19,9 @@ jobs:
                 fetch-depth: 0
             - id: base-branch              
               run: |
-                echo ${{ github.event.pull_request.head.ref }}
                 .github/workflows/scripts/substring.sh                
               shell: bash
-            - id: uat_pr              
+            - id: uat_pr
               run: |
-                echo ${{ steps.base-branch.outputs.base_name }}
-                gh pr create -t$PR_TITLE -b$PR_BODY -Buat -H${{ steps.base-branch.outputs.base_name }} -d
+                git checkout ${{ steps.base-branch.outputs.base_name }}
+                gh pr create -t$PR_TITLE -b$PR_BODY -Buat -d
