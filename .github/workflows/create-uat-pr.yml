@@ -27,4 +27,4 @@ jobs:
                 echo $PR_TITLE
                 echo $PR_BODY
                 git checkout ${{ steps.base-branch.outputs.base_name }}
-                gh pr create -Buat -d -t$"PR_TITLE" -b"$PR_BODY"
+                gh pr create -Buat -d -t"$PR_TITLE" -b"$PR_BODY"
