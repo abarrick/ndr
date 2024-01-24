@@ -8,7 +8,7 @@ on:
 jobs:
     create_uat_pr:
         runs-on: ubuntu-latest
-        if: contains(${{ github.event.pull_request.head.ref }}, 'gs-pipeline')
+        if: ${{ contains(github.event.pull_request.head.ref, 'gs-pipeline') }}
         env:
             GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
             PR_TITLE: ${{ github.event.pull_request.title }}
