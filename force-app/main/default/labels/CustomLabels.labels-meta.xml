@@ -12,6 +12,6 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Second Label</shortDescription>
-        <value>my second label</value>
+        <value>my second label - changed</value>
     </labels>
 </CustomLabels>
