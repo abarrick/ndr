@@ -15,15 +15,14 @@ jobs:
             PR_BODY: ${{ github.event.pull_request.body }}
         steps:
             - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
             - name: Work out base branch name
               id: base_branch
               run: .github/workflows/scripts/substring.sh
 
-            - uses: actions/checkout@v4
-              with:
-                fetch-depth: 0
             - name: Create UAT PR
               id: uat_pr
               run: |
                 git checkout uat
-                gh pr create -t $PR_TITLE -b $PR_BODY -Buat -H ${{ steps.base_branch.outputs.base_name }} -d
+                gh pr create -t$PR_TITLE -b$PR_BODY -Buat -H${{ steps.base_branch.outputs.base_name }} -d
