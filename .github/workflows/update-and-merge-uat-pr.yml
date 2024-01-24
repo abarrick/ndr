@@ -1,6 +1,6 @@
 name: 'Update and merge UAT PR'
 on:
-    repository_dispatch:
+    workflow_dispatch:
 jobs:
     update_merge_uat:
         runs-on: ubuntu-latest
