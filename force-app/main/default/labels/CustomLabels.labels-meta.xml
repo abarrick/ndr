@@ -7,4 +7,11 @@
         <shortDescription>First Label</shortDescription>
         <value>my first label</value>
     </labels>
+    <labels>
+        <fullName>Second_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Second Label</shortDescription>
+        <value>my second label</value>
+    </labels>
 </CustomLabels>
