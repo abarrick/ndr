@@ -25,5 +25,4 @@ jobs:
               id: uat_pr
               run: |
                 git checkout uat
-                gh pr create --title $PR_TITLE --body $PR_BODY --base "uat" --head ${{ steps.base_branch.outputs.base_name }} --draft
-
+                gh pr create --title $PR_TITLE --body $PR_BODY --base origin/uat --head ${{ steps.base_branch.outputs.base_name }} --draft
