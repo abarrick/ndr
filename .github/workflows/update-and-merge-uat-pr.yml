@@ -1,0 +1,17 @@
+name: 'Update and merge UAT PR'
+on:
+    repository_dispatch:
+jobs:
+    update_merge_uat:
+        runs-on: ubuntu-latest
+        if: ${{ contains(github.event.pull_request.head.ref, 'gs-pipeline') }}
+        env:
+            GH_TOKEN: ${{ secrets.GTHB_TOKEN }}
+            PR_NUMBER: ${{ github.event.client_payload }}        
+        steps:
+            - uses: actions/checkout@v4
+            - id: uat_pr_merge
+              run: |
+                echo "${PR_NUMBER}"
+                gh pr ready $PR_NUMBER
+                gh pr merge $PR_NUMBER
