@@ -26,4 +26,4 @@ jobs:
               id: uat_pr
               run: |
                 git checkout uat
-                gh pr create -t $PR_TITLE -b $PR_BODY -B uat -H ${{ steps.base_branch.outputs.base_name }} -d
+                gh pr create -t $PR_TITLE -b $PR_BODY -Buat -H ${{ steps.base_branch.outputs.base_name }} -d
