@@ -111,7 +111,7 @@
         <visible>true</visible>
       </applicationVisibilities>
       <custom>true</custom>
-      <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountNumber</field>
         <readable>true</readable>
@@ -122,6 +122,11 @@
         <readable>true</readable>
       </fieldPermissions>
       <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Activation_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.Active__c</field>
         <readable>true</readable>
