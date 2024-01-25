@@ -111,7 +111,12 @@
         <visible>true</visible>
       </applicationVisibilities>
       <custom>false</custom>
-      <fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Activation_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AppointmentInvitation.AppointmentTopicId</field>
         <readable>true</readable>
