@@ -8,6 +8,13 @@
         <value>my first label revised</value>
     </labels>
     <labels>
+        <fullName>Fourth_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Fourth Label</shortDescription>
+        <value>my new label is change</value>
+    </labels>
+    <labels>
         <fullName>PR_Template_Label</fullName>
         <language>en_US</language>
         <protected>false</protected>
