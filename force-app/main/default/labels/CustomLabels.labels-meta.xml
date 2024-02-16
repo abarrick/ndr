@@ -8,6 +8,13 @@
         <value>my first label revised</value>
     </labels>
     <labels>
+        <fullName>More_Labels</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>More Labels</shortDescription>
+        <value>not another one</value>
+    </labels>
+    <labels>
         <fullName>PR_Template_Label</fullName>
         <language>en_US</language>
         <protected>false</protected>
